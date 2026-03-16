@@ -21,9 +21,9 @@ jobs:
       FACEBOOK_API_VERSION:       "v21.0"
 
       # chon thumb tieude bat dau
-      SEQ_BASE_RUN: "79"
-      TITLE_START: "5"
-      THUMB_START: "9"
+      SEQ_BASE_RUN: "2"
+      TITLE_START: "1"
+      THUMB_START: "1"
 
       # công tắt chọn poll hoặc cloudflare
       IMG_PROVIDER: cloudflare

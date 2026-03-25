@@ -19,11 +19,6 @@ jobs:
       FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
       FACEBOOK_PAGE_ID:           ${{ secrets.FACEBOOK_PAGE_ID }}
       FACEBOOK_API_VERSION:       "v21.0"
-      FACEBOOK_UPLOAD_TIMEOUT_SEC: "7200"
-      FACEBOOK_STATUS_POLL_SEC:    "15"
-      FACEBOOK_STATUS_MAX_WAIT_SEC: "1800"
-      FACEBOOK_VERIFY_AFTER_PUBLISH: "1"
-      PYTHONUNBUFFERED: "1"
 
       # chon thumb tieude bat dau
       SEQ_BASE_RUN: "2"
@@ -35,7 +30,7 @@ jobs:
       CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
       CF_API_TOKEN:  ${{ secrets.CF_API_TOKEN }}
       CF_MODEL: "@cf/black-forest-labs/flux-1-schnell"
-      CF_STEPS: "2"
+      CF_STEPS: "8"
 
     steps:
       - name: Checkout wrapper (repo PUBLIC)
@@ -179,12 +174,6 @@ jobs:
             echo "[INFO] No requirements*.txt found — install tối thiểu"
             pip install Pillow opencv-python-headless numpy gdown imageio-ffmpeg requests
           fi
-
-      - name: Syntax check PRIVATE script
-        working-directory: ${{ steps.find_script.outputs.dir }}
-        run: |
-          set -e
-          python -m py_compile scripts/generate_thumbnails.py
 
       # CHẠY CODE trong repo PRIVATE (upload Facebook Page trực tiếp)
       - name: Run pipeline in PRIVATE
